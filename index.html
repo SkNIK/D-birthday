@@ -1,150 +1,143 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Girl 💖</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #ffe6f0, #ffe0e5);
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow: hidden;
-    }.container {
-  max-width: 90%;
-  text-align: center;
-  font-size: 1.4rem;
-  color: #000;
-  line-height: 2;
-}
-
-.line {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease;
-  position: relative;
-}
-
-.line.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.heart {
-  width: 10px;
-  height: 10px;
-  background-color: red;
-  position: absolute;
-  animation: explode 1s ease-out forwards;
-  transform: rotate(45deg);
-}
-
-.heart::before, .heart::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: red;
-  border-radius: 50%;
-}
-
-.heart::before {
-  top: -5px;
-  left: 0;
-}
-
-.heart::after {
-  left: -5px;
-  top: 0;
-}
-
-@keyframes explode {
-  to {
-    opacity: 0;
-    transform: translateY(-100px) scale(0.5);
-  }
-}
-
-.final-line {
-  font-size: 1.8rem;
-  color: crimson;
-  font-weight: bold;
-  animation: glow 1s infinite alternate;
-  margin-top: 2rem;
-}
-
-@keyframes glow {
-  from {
-    text-shadow: 0 0 5px red;
-  }
-  to {
-    text-shadow: 0 0 20px crimson, 0 0 10px pink;
-  }
-}
-
-  </style>
-</head>
-<body>
-  <div class="container" id="message"></div>
-  <script>
-    const lines = [
-      "Mere liye tu bas ek ladki nahi hai...",
-      "Tu meri subah ki wajah hai… meri neend ka sakoon hai.",
-      "You’re not just mine...",
-      "You are mine to crave, mine to protect, mine to ruin.",
-      "Tera chehra dekhu to duniya ruk jaati hai...",
-      "Teri aankhon mein doob jaun, to jeevan safar ho jaye.",
-      "I don’t want peace if peace means being away from you.",
-      "I want your scent on my pillow.",
-      "I want your skin under my fingers.",
-      "I want your moans in my ear and your name on my lips.",
-      "You’re not just a dream, you’re the obsession I can’t live without.",
-      "Tu sirf meri hai...",
-      "Teri har saans, har nazar, har lamha — sirf mera hai.",
-      "I’ll kiss every inch of your skin like I’m worshipping a goddess.",
-      "I’ll whisper your name like a prayer… again… and again…",
-      "Happy Birthday, my girl.",
-      "You’re not my chapter. You are my whole damn book.",
-      "> YOU. ARE. MINE.\nForever. No escape."
-    ];const container = document.getElementById("message");
-
-function showLine(index) {
-  if (index >= lines.length) return;
-
-  const line = document.createElement("div");
-  line.className = "line";
-  line.innerHTML = lines[index];
-  container.appendChild(line);
-
-  setTimeout(() => {
-    line.classList.add("show");
-    createHearts(line);
-  }, 100);
-
-  setTimeout(() => {
-    showLine(index + 1);
-  }, 2000);
-}
-
-function createHearts(lineElement) {
-  for (let i = 0; i < 20; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * lineElement.offsetWidth + "px";
-    heart.style.top = "0";
-    lineElement.appendChild(heart);
-
-    setTimeout(() => lineElement.removeChild(heart), 1000);
-  }
-}
-
-showLine(0);
-
-  </script>
-</body>
+<!DOCTYPE html>
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>For My Girl 💖</title>  
+  <style>  
+    body {  
+      margin: 0;  
+      padding: 0;  
+      background: linear-gradient(135deg, #ffe6f0, #ffe0e5);  
+      font-family: 'Segoe UI', sans-serif;  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      justify-content: center;  
+      min-height: 100vh;  
+      overflow: hidden;  
+    }  
+    .container {  
+      max-width: 90%;  
+      text-align: center;  
+      font-size: 1.4rem;  
+      color: #000;  
+      line-height: 2;  
+    }  
+    .line {  
+      opacity: 0;  
+      transform: translateY(20px);  
+      transition: all 1s ease;  
+      position: relative;  
+    }  
+    .line.show {  
+      opacity: 1;  
+      transform: translateY(0);  
+    }  
+    .heart {  
+      width: 10px;  
+      height: 10px;  
+      background-color: red;  
+      position: absolute;  
+      animation: explode 1s ease-out forwards;  
+      transform: rotate(45deg);  
+    }  
+    .heart::before, .heart::after {  
+      content: '';  
+      position: absolute;  
+      width: 10px;  
+      height: 10px;  
+      background-color: red;  
+      border-radius: 50%;  
+    }  
+    .heart::before {  
+      top: -5px;  
+      left: 0;  
+    }  
+    .heart::after {  
+      left: -5px;  
+      top: 0;  
+    }  
+    @keyframes explode {  
+      to {  
+        opacity: 0;  
+        transform: translateY(-100px) scale(0.5);  
+      }  
+    }  
+    .final-line {  
+      font-size: 1.8rem;  
+      color: crimson;  
+      font-weight: bold;  
+      animation: glow 1s infinite alternate;  
+      margin-top: 2rem;  
+    }  
+    @keyframes glow {  
+      from {  
+        text-shadow: 0 0 5px red;  
+      }  
+      to {  
+        text-shadow: 0 0 20px crimson, 0 0 10px pink;  
+      }  
+    }  
+  </style>  
+</head>  
+<body>  
+  <div class="container" id="message"></div>  
+  <script>  
+    const lines = [  
+      "You're not just my love — you're my addiction.",
+      "I crave the sound of your moans like music in my veins.",
+      "You don’t just take my cock, you beg for it. Again. And again.",
+      "You're my personal cumslut — sweet, obedient, and dripping for me.",
+      "You call yourself randi, but baby, you're MY randi — made to take me.",
+      "Your pussy was made to be ruined by me. Stretched. Owned. Loved.",
+      "You want my cock more than you want air. That’s your truth.",
+      "Say it. Say you're my fucktoy. My slut. My rakhel. And only mine.",
+      "Your mouth? My playground. Your body? My property.",
+      "I’ll slap that pretty face just to remind you who you belong to.",
+      "You don’t need love stories. You need my hands around your throat.",
+      "I'll make you cum till you're crying... and still use you more.",
+      "You love hearing your own moans bounce off the walls as I break you.",
+      "You're not broken. You're built for this. For me. For my cock.",
+      "You're the filthiest gift I’ve ever been blessed with.",
+      "And after all that... I'll hold you tight, kiss your forehead, call you my princess.",
+      "Because even my perfect slut deserves to be loved like royalty.",
+      "You belong to me, forever. My slut. My randi. My only."  
+    ];  
+  
+    const container = document.getElementById("message");  
+  
+    function showLine(index) {  
+      if (index >= lines.length) return;  
+  
+      const line = document.createElement("div");  
+      line.className = "line";  
+      line.innerHTML = lines[index];  
+      container.appendChild(line);  
+  
+      setTimeout(() => {  
+        line.classList.add("show");  
+        createHearts(line);  
+      }, 100);  
+  
+      setTimeout(() => {  
+        showLine(index + 1);  
+      }, 2500);  
+    }  
+  
+    function createHearts(lineElement) {  
+      for (let i = 0; i < 20; i++) {  
+        const heart = document.createElement("div");  
+        heart.className = "heart";  
+        heart.style.left = Math.random() * lineElement.offsetWidth + "px";  
+        heart.style.top = "0";  
+        lineElement.appendChild(heart);  
+  
+        setTimeout(() => lineElement.removeChild(heart), 1000);  
+      }  
+    }  
+  
+    showLine(0);  
+  </script>  
+</body>  
 </html>
