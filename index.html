@@ -1,126 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're My Everything</title>
+  <title>For My Girl 💖</title>
   <style>
     body {
       margin: 0;
       padding: 0;
+      background: linear-gradient(135deg, #ffe6f0, #ffe0e5);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       overflow: hidden;
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      height: 100vh;
-      font-family: 'Arial', sans-serif;
-    }
+    }.container {
+  max-width: 90%;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #000;
+  line-height: 2;
+}
 
-    .heart {
-      color: red;
-      font-size: 24px;
-      position: absolute;
-      top: -20px;
-      animation: fall linear infinite;
-    }
+.line {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+  position: relative;
+}
 
-    @keyframes fall {
-      to {
-        transform: translateY(110vh);
-        opacity: 0;
-      }
-    }
+.line.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .popup {
-      position: absolute;
-      padding: 10px 15px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      border-radius: 10px;
-      font-size: 18px;
-      animation: fadein 2s ease forwards;
-    }
+.heart {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  position: absolute;
+  animation: explode 1s ease-out forwards;
+  transform: rotate(45deg);
+}
 
-    @keyframes fadein {
-      from {
-        opacity: 0;
-        transform: scale(0.7);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+.heart::before, .heart::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+}
 
-    .stars, .twinkling, .galaxy {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: transparent;
-      pointer-events: none;
-    }
+.heart::before {
+  top: -5px;
+  left: 0;
+}
 
-    .stars {
-      background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/img/stars.png') repeat;
-      z-index: 0;
-    }
+.heart::after {
+  left: -5px;
+  top: 0;
+}
 
-    .twinkling {
-      background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/img/twinkling.png') repeat;
-      animation: moveTwinkling 200s linear infinite;
-      z-index: 1;
-    }
+@keyframes explode {
+  to {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.5);
+  }
+}
 
-    @keyframes moveTwinkling {
-      from {background-position: 0 0;}
-      to {background-position: -10000px 5000px;}
-    }
+.final-line {
+  font-size: 1.8rem;
+  color: crimson;
+  font-weight: bold;
+  animation: glow 1s infinite alternate;
+  margin-top: 2rem;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px red;
+  }
+  to {
+    text-shadow: 0 0 20px crimson, 0 0 10px pink;
+  }
+}
+
   </style>
 </head>
 <body>
-  <div class="stars"></div>
-  <div class="twinkling"></div>
-
+  <div class="container" id="message"></div>
   <script>
-    const messages = [
-      "You're my everything.",
-      "You belong on your knees in front of my cock.",
-      "You’re my perfect little cumdump.",
-      "I love when you beg to be used like a dirty whore.",
-      "You’re not just mine, you’re my randi, my rakhel.",
-      "My filthy little addiction.",
-      "I own your body, your mouth, your pussy — all mine.",
-      "You're my private slut, and I fucking love it."
-    ];
+    const lines = [
+      "Mere liye tu bas ek ladki nahi hai...",
+      "Tu meri subah ki wajah hai… meri neend ka sakoon hai.",
+      "You’re not just mine...",
+      "You are mine to crave, mine to protect, mine to ruin.",
+      "Tera chehra dekhu to duniya ruk jaati hai...",
+      "Teri aankhon mein doob jaun, to jeevan safar ho jaye.",
+      "I don’t want peace if peace means being away from you.",
+      "I want your scent on my pillow.",
+      "I want your skin under my fingers.",
+      "I want your moans in my ear and your name on my lips.",
+      "You’re not just a dream, you’re the obsession I can’t live without.",
+      "Tu sirf meri hai...",
+      "Teri har saans, har nazar, har lamha — sirf mera hai.",
+      "I’ll kiss every inch of your skin like I’m worshipping a goddess.",
+      "I’ll whisper your name like a prayer… again… and again…",
+      "Happy Birthday, my girl.",
+      "You’re not my chapter. You are my whole damn book.",
+      "> YOU. ARE. MINE.\nForever. No escape."
+    ];const container = document.getElementById("message");
 
-    function createPopup() {
-      const popup = document.createElement("div");
-      popup.className = "popup";
-      popup.textContent = messages[Math.floor(Math.random() * messages.length)];
+function showLine(index) {
+  if (index >= lines.length) return;
 
-      popup.style.top = `${Math.random() * 90}vh`;
-      popup.style.left = `${Math.random() * 90}vw`;
+  const line = document.createElement("div");
+  line.className = "line";
+  line.innerHTML = lines[index];
+  container.appendChild(line);
 
-      document.body.appendChild(popup);
+  setTimeout(() => {
+    line.classList.add("show");
+    createHearts(line);
+  }, 100);
 
-      setTimeout(() => {
-        popup.remove();
-      }, 4000);
-    }
+  setTimeout(() => {
+    showLine(index + 1);
+  }, 2000);
+}
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.animationDuration = `${3 + Math.random() * 2}s`;
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }
+function createHearts(lineElement) {
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * lineElement.offsetWidth + "px";
+    heart.style.top = "0";
+    lineElement.appendChild(heart);
 
-    setInterval(createPopup, 3000);
-    setInterval(createHeart, 300);
+    setTimeout(() => lineElement.removeChild(heart), 1000);
+  }
+}
+
+showLine(0);
+
   </script>
 </body>
 </html>
